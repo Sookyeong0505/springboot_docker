@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: springboot_docker
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/rankDB
+    hikari:
+      username: rankDB
+      password: 1234%
+      data-source-properties:
+        rewriteBatchedInserts: true
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        order_updates: true
+        order_inserts: true
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: Trace
+
+server:
+  port: 8080
